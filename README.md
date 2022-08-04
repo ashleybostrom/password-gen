@@ -3,7 +3,7 @@
 ## Random Password Generator
 This application serves employees so they are able to generate random passwords based on
 chosen criteria. This app runs in the browser and features dynamically updated HTML & CSS
-powered by JavaScript. It is easy to use, with a clean and clear User Interface that is
+powered by JavaScript. It is easy to use, with a clean and clear user interface that is
 responsive and adapts to multiple screen sizes.
 
 The password CAN include special characters. If you're unfamiliar with special characters,
