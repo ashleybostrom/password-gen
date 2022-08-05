@@ -41,4 +41,4 @@ THEN the password is either displayed in an alert or written to the page
 <img src="passgenscreencap.png"/>
 
 ## Password Generator Link
-[PASSWORDGENERATOR]
+[PasswordGenerator] (https://ashleybostrom.github.io/password-gen)
