@@ -12,18 +12,18 @@ function writePassword() {
   passwordText.value = password;
 
 }
-
+function lengthCheck() {
+  var number = prompt("Please enter the number of characters you want for your new password. It must be between 8 to 128.");
+  if (number < 8 || number > 128 || isNaN(number)) {
+    console.log("f", number)
+    return lengthCheck()
+  }
+  return number
+}
 // Prompts that come up after you click generate password
 function generatePassword() {
-  var passwordLength = (function lengthCheck() {
-    var number = prompt("Please enter the number of characters you want for your new password. It must be between 8 to 128.");
-    if (number < 8 || number > 128 || isNaN(number)) {
-      number
-      lengthCheck()
-    }
-    return number
-  }())
-  console.log (passwordLength)
+  var passwordLength = lengthCheck()
+  console.log(passwordLength)
   //lengthCheck();
     
   var numbers = confirm("Click OK to include numbers in your password");
@@ -95,9 +95,8 @@ function generatePassword() {
   var randomPasswordGenerated = "";
 
   // loop getting random characters
-  for (let i = 0; i < (parseInt(passwordLength) - minimumCount); i++) {
-    var randomNumberPicked = Math.floor(Math.random() * 4 + 8);
-
+  for (let i = 0; i < (parseInt(passwordLength) + minimumCount); i++) {
+    var randomNumberPicked = Math.floor(Math.random() * 9);
     randomPasswordGenerated += randomNumberPicked;
 
   }
