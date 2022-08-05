@@ -15,7 +15,16 @@ function writePassword() {
 
 // Prompts that come up after you click generate password
 function generatePassword() {
-  var passwordLength = prompt("Please enter the number of characters you want for your new password.  It must be between 8 to 128.");
+  var passwordLength = (function lengthCheck() {
+    var number = prompt("Please enter the number of characters you want for your new password. It must be between 8 to 128.");
+    if (number < 8 || number > 128 || isNaN(number)) {
+      number
+      lengthCheck()
+    }
+    return number
+  }())
+  console.log (passwordLength)
+  //lengthCheck();
     
   var numbers = confirm("Click OK to include numbers in your password");
 
@@ -30,7 +39,6 @@ function generatePassword() {
 
 
   // Empty minimums for numbers, lowerCases, upperCases & specialCharacters
-
   var minimumNumbers = "";
   var minimumLowerCases = "";
   var minimumUpperCases = "";
@@ -40,7 +48,7 @@ function generatePassword() {
   // Generator functions**
   var functionArray = {
     getNumbers: function() {
-      return String.fromCharCode(Math.floor(Math.random() * 10 + 48));
+      return String.fromCharCode(Math.floor(Math.random() * 10 + 48)); 
     },
 
     getLowerCases: function() {
@@ -60,7 +68,7 @@ function generatePassword() {
   // Checks to make sure user selected ok for all and uses empty minimums from above
 
   if (numbers === true) {
-    minimumNumbers = functionArray.getNumbers();
+    minimumNumbers = functionArray.getNumbers(); 
     minimumCount++;
 
   }
