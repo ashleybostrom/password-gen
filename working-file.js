@@ -94,12 +94,13 @@ function generatePassword() {
   // empty string variable for the for loop below
   var randomPasswordGenerated = "";
 
-  // loop getting random characters
-  for (let i = 0; i < (parseInt(passwordLength) + minimumCount); i++) {
+  
+  
+  for (var i = 0; i < (parseInt(passwordLength) - minimumCount); i++) {
     var randomNumberPicked = Math.floor(Math.random() * 9);
     randomPasswordGenerated += randomNumberPicked;
 
-  }
+   }
 
   // to make sure characters are added to the password
   randomPasswordGenerated += minimumNumbers;
