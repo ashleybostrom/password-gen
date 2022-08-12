@@ -1,6 +1,29 @@
-// Special characters for the function created
-var specialCharacters = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
-var generateBtn = document.querySelector('#generate')
+
+// Arrays for the functions created
+var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+var specialCharacters = ["!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "^", "_", "`", "{", "|", "}", "~"];
+var generateBtn = document.querySelector('#generate');
+
+var finalCharArray = [];
+
+if (lowerCase) {
+  finalCharArray.push(lowerCase)
+}
+
+if (upperCase) {
+  finalCharArray.push(upperCase)
+}
+
+if (numbers) {
+  finalCharArray.push(numbers)
+}
+
+if (specialCharacters) {
+  finalCharArray.push(specialCharacters)
+};
+
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
 
@@ -10,7 +33,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 function lengthCheck() {
   var number = prompt("Please enter the number of characters you want for your new password. It must be between 8 to 128.");
@@ -48,15 +70,15 @@ function generatePassword() {
   // Generator functions**
   var functionArray = {
     getNumbers: function() {
-      return String.fromCharCode(Math.floor(Math.random() * 10 + 48)); 
+      return String.fromCharCode(Math.floor(Math.random() * 10)); 
     },
 
     getLowerCases: function() {
-      return String.fromCharCode(Math.floor(Math.random() * 26 + 97));
+      return String.fromCharCode(Math.floor(Math.random() * 26));
     },
 
     getUpperCases: function() {
-      return String.fromCharCode(Math.floor(Math.random() * 26 + 65));
+      return String.fromCharCode(Math.floor(Math.random() * 26));
     },
 
     getSpecialCharacters: function() {
@@ -97,10 +119,13 @@ function generatePassword() {
   
   
   for (var i = 0; i < (parseInt(passwordLength) - minimumCount); i++) {
-    var randomNumberPicked = Math.floor(Math.random() * 9);
-    randomPasswordGenerated += randomNumberPicked;
+    var randomCharacterPicked = finalCharArray[Math.floor(Math.random() * finalCharArray.length)];
+    randomPasswordGenerated += randomCharacterPicked;
 
    }
+   console.log(randomPasswordGenerated);
+   console.log(passwordLength);
+   console.log(minimumCount);
 
   // to make sure characters are added to the password
   randomPasswordGenerated += minimumNumbers;
