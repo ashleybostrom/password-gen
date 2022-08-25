@@ -5,23 +5,24 @@ var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"
 var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 var specialCharacters = ["!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "^", "_", "`", "{", "|", "}", "~"];
 var generateBtn = document.querySelector('#generate');
+var finalPassword = [];
 
 var finalCharArray = [];
 
 if (lowerCase) {
-  finalCharArray.push(lowerCase)
+  finalCharArray = finalCharArray.concat(lowerCase);
 }
 
 if (upperCase) {
-  finalCharArray.push(upperCase)
+  finalCharArray = finalCharArray.concat(upperCase);
 }
 
 if (numbers) {
-  finalCharArray.push(numbers)
+  finalCharArray = finalCharArray.concat(numbers);
 }
 
 if (specialCharacters) {
-  finalCharArray.push(specialCharacters)
+  finalCharArray = finalCharArray.concat(specialCharacters);
 };
 
 // Add event listener to generate button
@@ -32,7 +33,7 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  passwordText.value = finalPassword.join("");
 }
 function lengthCheck() {
   var number = prompt("Please enter the number of characters you want for your new password. It must be between 8 to 128.");
@@ -118,9 +119,12 @@ function generatePassword() {
 
   
   
-  for (var i = 0; i < (parseInt(passwordLength) - minimumCount); i++) {
+  for (var i = 0; i < parseInt(passwordLength); i++) {
+    console.log(finalCharArray)
     var randomCharacterPicked = finalCharArray[Math.floor(Math.random() * finalCharArray.length)];
-    randomPasswordGenerated += randomCharacterPicked;
+    //randomPasswordGenerated += randomCharacterPicked;
+    finalPassword.push(randomCharacterPicked)
+    
 
    }
    console.log(randomPasswordGenerated);
